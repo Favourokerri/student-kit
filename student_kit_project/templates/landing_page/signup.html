@@ -1,0 +1,41 @@
+{% extends "landing_page/main.html" %}
+{% block title %}signup{% endblock %}
+{% block content %}
+
+<!-- signup page-->
+{% include 'messages.html' %}
+<article>
+  <section class="hero" id="hero">
+      <div class="container">
+
+        <div class="hero-content">
+          <h1 class="h1 hero-title"> Hello From student Kit 😁</h1>
+
+          <p class="hero-text">
+              lets make you the best student
+          </p>
+
+          <p class="form-text">
+            <span>🥳</span>
+            Our goal is to help organise your studies as a student 
+            and also provide you with tools for efficient studies
+          </p>
+        </div>
+
+        <figure class="Signup">
+          <form method="POST" action="{% url 'signup' %}" class="hero-form">{% csrf_token %}
+              <h1 class="h1 hero-title"> Signup </h1>
+              <input type="text" name="first_name" required placeholder="Enter Your first name" class="input-field">
+              <input type="text" name="last_name" required placeholder="Enter Your last_name" class="input-field">
+              <input type="email" name="email" required placeholder="Enter Your Email" class="input-field">
+              <input type="password" name="password" required placeholder="Create password" class="input-field">
+              <input type="password" name="confirm-password" required placeholder="confirm password" class="input-field">
+              <button type="submit" class="btn btn2-primary">Signup</button>
+              <p class="hero-text">already have an accout? <a href="{% url 'login' %}">sigin in </a></p>
+            </form>
+        </figure>
+
+      </div>
+    </section>
+  </article>
+{% endblock %}

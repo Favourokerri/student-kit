@@ -1,0 +1,35 @@
+{% extends "dash_board/main2.html" %}
+
+{% block title %} dashboard {% endblock %}
+{% block content %}
+{% include 'messages.html' %}
+
+<section>
+   <div class="notifications-container">
+    {% for notification in notifications %}
+        {% if not notification.read %}
+        <div class="notification">
+            <button value= {{ notification.id }}>
+                <span>{{ notification.title }}</span>
+                <i value={{notification.id}} class="fa-solid fa-eye"></i>
+            </button>
+            <p>{{ notification.message }}</p>
+        </div>
+
+        {% else %}
+            <div class="read">
+                <button value= {{ notification.id }}>
+                    <span>{{ notification.title }}</span>
+                    <i value={{notification.id}} class="fa-solid fa-eye"></i>
+                </button>
+                <p>{{ notification.message }}</p>
+            </div>
+        {% endif %}
+    {% endfor %}
+    </div>
+</section>
+<!-- CONTENT -->
+{% endblock %}
+	
+</body>
+</html>

@@ -1,0 +1,38 @@
+{% extends "dash_board/main2.html" %}
+
+{% block title %} dashboard {% endblock %}
+{% block content %}
+{% include 'messages.html' %}
+
+<div class="card_header">Practise flash cards</div>
+
+{% if cards %}
+<div class="flash-cards-container">
+    {% for card in cards %}
+        <div class="flash-card">
+            <div class="flash-card-header">
+                <a href="{% url 'edith_card' card_id=card.id %}">
+                    <span class="edit-icon"><i class="fa-regular fa-pen-to-square"></i></span>
+                </a>
+                <a href="{% url 'delete_card' card_id=card.id %}">
+                    <span class="delete-icon"><i class="fa-solid fa-trash"></i></span>
+                </a>
+            </div>
+            <div class="flash-card-content">
+                <h3>{{ card.title }}</h3>
+                <p>{{ card.description }}</p>
+            </div>
+            <div class="flash-card-footer">
+                <a href="{% url 'card_items' card_id=card.id %}">
+                    <button class="practice-button" onclick="practiceCard(this)">View card</button>
+                </a>
+                <button class="practice-button" onclick="practiceCard(this)">Practice</button>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
+<a href="{% url 'add_card' %}">
+    <button class="create-set-button" onclick="createSet()">Create Set <i class="fa-solid fa-plus"></i></button>
+</a>
+{% endblock %}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .confirmation-box {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            text-align: center;
+            max-width: 300px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 24px;
+        }
+
+        p {
+            color: #666;
+            font-size: 16px;
+            margin: 20px 0;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary {
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        .btn-secondary {
+            background-color: #ccc;
+            color: #333;
+        }
+
+        .btn:hover {
+            background-color: #2a7ca9;
+        }
+    </style>
+</head>
+<body>
+    <form method="post" action="">
+        {% csrf_token %}
+        <div class="confirmation-box">
+            <h1>Are you sure you want to delete {{ room.name }}?</h1>
+            <p>This action cannot be undone.</p>
+            <div class="btn-container">
+                <a href={% url 'chat_home' %}>
+                <button class="btn btn-secondary" type="button">Cancel</button>
+                </a>
+                <button class="btn btn-primary" type="submit">Delete</button>
+            </div>
+        </div>
+    </form>
+    
+</body>
+</html>

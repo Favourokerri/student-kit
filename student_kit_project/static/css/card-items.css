@@ -1,0 +1,97 @@
+/* Default styles for cards */
+.card {
+    width: 300px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    display: inline-block; /* Change this to inline-block */
+    vertical-align: top; /* Align them at the top */
+}
+
+.card-header {
+    background: #3498db;
+    color: #fff;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.card-content {
+    padding: 15px;
+}
+
+.card-description {
+    font-size: 16px;
+    color: #333;
+    margin: 0;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f5f5f5;
+    padding: 10px 15px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.icon {
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.icon:hover {
+    color: #3498db;
+}
+
+.card-items-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px; /* Reduce margin for small screens */
+}
+
+.create-item-button {
+    background-color: #3C91E6;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 20px auto;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.create-item-button:hover {
+    background-color: #215f9a;
+}
+
+/* Media query for screens smaller than 768px */
+@media screen and (max-width: 768px) {
+    .card {
+        width: 90%;
+        margin-top: 20px;
+    }
+
+    .create-item-button {
+        margin: 10px auto; /* Reduce margin for small screens */
+    }
+}
+
+/* Media query for screens wider than 1200px */
+@media screen and (min-width: 1200px) {
+    .create-item-button {
+        padding: 15px 30px;
+        font-size: 1.2rem;
+        margin: 10px auto; /* Reduce margin for larger screens */
+    }
+}

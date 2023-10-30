@@ -1,0 +1,38 @@
+{% extends "landing_page/main.html" %}
+{% block title %}login{% endblock %}
+{% block content %}
+
+<!-- signup page-->
+{% include 'messages.html' %}
+<article>
+  <section class="hero" id="hero">
+      <div class="container">
+
+        <div class="hero-content">
+          <h1 class="h1 hero-title"> Hello From student Kit 😁</h1>
+
+          <p class="hero-text">
+              lets make you the best student
+          </p>
+
+          <p class="form-text">
+            <span>🥳</span>
+            Our goal is to help organise your studies as a student 
+            and also provide you with tools for efficient studies
+          </p>
+        </div>
+
+        <figure class="Signup">
+          <form method="POST" action="{% url 'resend_verification' %}" class="hero-form">{% csrf_token %}
+              <h1 class="h1 hero-title"> verify account </h1>
+              <p> did not see verification email? enter email to send again</p>
+              <input type="email" name="email" required placeholder="Enter Your Email" class="input-field">
+              <button type="submit" class="btn btn2-primary">Signup</button>
+              <p class="hero-text">Dont have an accout? <a href="{% url 'signup' %}">sigup </a></p>
+            </form>
+        </figure>
+
+      </div>
+    </section>
+  </article>
+{% endblock %}

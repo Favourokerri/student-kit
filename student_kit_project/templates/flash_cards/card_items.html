@@ -1,0 +1,45 @@
+{% extends "dash_board/main2.html" %}
+
+{% block title %} dashboard {% endblock %}
+{% block content %}
+{% include 'messages.html' %}
+
+<div class="card_header">{{ card.title }}</div>
+<div class="card-items-btn">
+    <a href="{% url 'add_card_items' card_id=card.id %}">
+        <button class="create-item-button">Add cards <i class="fa-solid fa-plus"></i></button>
+    </a>
+    <a href="">
+        <button class="create-item-button">Practice <i class="fa-solid fa-plus"></i></button>
+    </a>
+</div>
+<div class="card-container">  <!-- Add a container for the cards -->
+    {% for item in card_items %}
+        <div class="card">
+            <div class="card-header">Practice makes perfect</div>
+            <div class="card-content">
+                <p class="card-description">{{ item.question }}</p>
+            </div>
+            <div class="card-footer btn_speech">
+               <button data-card-id="{{ item.id }}">
+                    <span class="icon"><i class="fa-solid fa-volume-high"></i></span>
+                </button>                
+                <a href="{% url 'edith_card_item' card_id=item.id %}">
+                    <span class="icon"><i class="fa-regular fa-pen-to-square"></i></span>
+                </a>
+                <a href="{% url 'delete_card_item' card_id=item.id %}">
+                    <span class="icon"> <i class="fa-solid fa-trash"></i></span>
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<div class="card-items-btn">
+    <a href="{% url 'add_card_items' card_id=card.id %}">
+        <button class="create-item-button">Add cards <i class="fa-solid fa-plus"></i></button>
+    </a>
+    <a href="">
+        <button class="create-item-button">Practice <i class="fa-solid fa-plus"></i></button>
+    </a>
+</div>
+{% endblock %}

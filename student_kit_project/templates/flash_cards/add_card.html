@@ -1,0 +1,23 @@
+{% extends "dash_board/main2.html" %}
+
+{% block title %} dashboard {% endblock %}
+{% block content %}
+{% include 'messages.html' %}
+
+<div class="card_header">Add flash cards</div>
+<div class="add_container">
+    <h1>Add Item</h1>
+    <form action="" method="POST"> {% csrf_token %}
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4" placeholder="can be left blank"></textarea>
+        </div>
+        <button type="submit" class="btn">save</button>
+        <button type="submit" class="btn">save/Add</button>
+    </form>
+</div>
+{% endblock %}

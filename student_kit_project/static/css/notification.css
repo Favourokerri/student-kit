@@ -1,0 +1,105 @@
+.notifications-container{
+    max-width: 800px;
+    margin-left: 20px;
+    margin-top: 50px;
+}
+
+
+.notification button{
+    width: 100%;   
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 15px 20px;
+    margin-bottom: 20px;
+    border:none;
+    outline: none;
+    font-size: 22px;
+    color: #000;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.05);
+    border-radius: 20px;
+}
+
+.notification button span{
+    font-size: 18px;
+    color: #3C91E6;
+}
+.notification p{
+    font-size: 17px;
+    max-height: 0;
+    opacity: 0;
+    line-height: 1.5;
+    overflow: hidden;
+    transition: all 0.6s ease;
+}
+.d-arrow{
+    transition: transform 0.5s ease-in ;
+    color: #fff;
+}
+
+.notification h4 {
+    font-size: 13px;
+    color: #3C91E6;
+}
+/*add this class when click*/
+.notification p.show{
+    max-height: 200px; 
+    opacity: 1;
+    padding:0px 15px 30px 15px;
+}
+.notification button .d-arrow.rotate{
+    transform: rotate(180deg);
+}
+
+/* read notifications */
+
+.read button{
+    width: 100%;   
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 15px 20px;
+    margin-bottom: 20px;
+    border:none;
+    outline: none;
+    font-size: 22px;
+    color: #000;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.05);
+    border-radius: 20px;
+}
+
+.read button span{
+    font-size: 18px;
+    color: #020508;
+}
+.read p{
+    font-size: 17px;
+    max-height: 0;
+    opacity: 0;
+    line-height: 1.5;
+    overflow: hidden;
+    transition: all 0.6s ease;
+}
+.read {
+    transition: transform 0.5s ease-in ;
+    color: black;
+}
+
+.read h4 {
+    font-size: 13px;
+    color: #3C91E6;
+}
+
+/*add this class when click*/
+.read p.show{
+    max-height: 200px; 
+    opacity: 1;
+    padding:0px 15px 30px 15px;
+}
+.read button .d-arrow.rotate{
+    transform: rotate(180deg);
+}

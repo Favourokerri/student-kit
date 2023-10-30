@@ -1,0 +1,19 @@
+{% extends "dash_board/main2.html" %}
+
+{% block title %} dashboard {% endblock %}
+{% block content %}
+{% include 'messages.html' %}
+
+<div class="card_header">Edith flash cards</div>
+<div class="add_container">
+    <h1>Edith Item</h1>
+    <form action="" method="POST"> {% csrf_token %}
+        <div class="form-group">
+            <label for="question">Question</label>
+            <textarea value =  id="Question" name="question" rows="4">{{ card.question }}</textarea>
+        </div>
+        <button type="submit" class="btn">save</button>
+        <button type="submit" class="btn">save/Add</button>
+    </form>
+</div>
+{% endblock %}

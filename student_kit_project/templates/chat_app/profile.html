@@ -1,0 +1,141 @@
+{% extends "chat_app/main.html" %}
+{% load static %}
+{% block body %}
+{% include "messages.html" %}
+  <main class="profile-page layout layout--3">
+    <div class="container">
+      <!-- Topics Start -->
+      <div class="topics">
+        <div class="topics__header">
+          <h2>Browse Topics</h2>
+        </div>
+        <ul class="topics__list">
+          <li><a href="{% url 'filter_room' action="all" %}" class="active">All <span>553</span></a></li>
+          <li><a href="{% url 'filter_room' action="my_created_rooms" %}">Your created rooms <span>553</span></a></li>
+          <li><a href="/">joined rooms <span>553</span></a></li>
+        {% for category in categories %}
+          <li><a href="/">{{category.name}} <span>232</span></a></li>
+        {% endfor %}
+        </ul>
+        <a class="btn btn--link" href="topics.html">
+          More
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+            <title>chevron-down</title>
+            <path d="M16 21l-13-13h-3l16 16 16-16h-3l-13 13z"></path>
+          </svg>
+        </a>
+      </div>
+      <!-- Topics End -->
+
+      <!-- Room List Start -->
+      <div class="roomList">
+        <div class="profile">
+          <div class="profile__avatar">
+            <div class="avatar avatar--large active">
+              {% if user.profile_image %}
+                <img src="{{ user.profile_image.url }}" />
+              {% else %}
+                <img src="{% static 'images/default.jpeg' %}" alt="User Profile Image">
+            {% endif %}
+            </div>
+          </div>
+          <div class="profile__info">
+            <h3> first name: {{ user.first_name }}</h3>
+            <h3>last name: {{ user.last_name }}</h3>
+            <p>{{ user.email }}</p>
+            <a href="{% url 'edith_profile' %}" class="btn btn--main btn--pill">Edit Profile</a>
+          </div>
+          <div class="profile__about">
+            <h3>About</h3>
+            <p>
+              {{user.bio}}
+            </p>
+          </div>
+        </div>
+
+        <div class="roomList__header">
+          <div>
+            <h2>Study Rooms Hosted by dennis_ivy</a>
+            </h2>
+          </div>
+        </div>
+        {% if rooms %}
+        {% for room in rooms %}
+            <div class="roomListRoom">
+                    <div class="roomListRoom__header">
+                    <a href="profile.html" class="roomListRoom__author">
+                        <div class="avatar avatar--small">
+                      {% if user.profile_image %}
+                          <img src="{{ user.profile_image.url }}" />
+                      {% else %}
+                      <img src="{% static 'images/default.jpeg' %}" alt="User Profile Image">
+                      {% endif %}
+                        </div>
+                        <span>{{ room.host }}</span>
+                        <p> (host) </p>
+                    </a>
+                    <div class="roomListRoom__actions">
+                        <span>5 days ago</span>
+                    </div>
+                    </div>
+                    <div class="roomListRoom__content">
+                    <a href="{% url 'room' room_id=room.id %}" style="color:#a3bb99;">{{ room.name }}</a>
+                    <p>
+                       {{ room.description }}
+                    </p>
+                    </div>
+                    <div class="roomListRoom__meta">
+                    <a href="room.html" class="roomListRoom__joined"><i class="fa-solid fa-user-group"></i>5.3k Joined</a>
+                    <p class="roomListRoom__topic">join</p>
+                    {% if request.user == room.host %}
+                      <a href="{% url 'delete_room' room_id=room.id %}">
+                        <p class="roomListRoom__topic">delete</p>
+                      </a>
+                    {% endif %}
+                    </div>
+                    </div>
+                {% endfor %}
+                {% else %}
+                    <h1> no rooms currently. create one </h1>
+                {% endif %}
+                </div>
+                <!-- Room List End -->
+      <!-- Activities Start -->
+      <div class="activities">
+        <div class="activities__header">
+          <h2>Recent Activities</h2>
+        </div>
+        <div class="activities__box">
+          <div class="activities__boxHeader roomListRoom__header">
+            <a href="profile.html" class="roomListRoom__author">
+              <div class="avatar avatar--small">
+                <img src="https://randomuser.me/api/portraits/women/11.jpg" />
+              </div>
+              <p>
+                @sulamita_ivy
+                <span>5 days ago</span>
+              </p>
+            </a>
+            <div class="roomListRoom__actions">
+              <a href="#">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                  <title>delete</title>
+                  <path
+                    d="M30 4h-8v-3c0-0.553-0.447-1-1-1h-10c-0.553 0-1 0.447-1 1v3h-8v2h2v24c0 1.104 0.897 2 2 2h20c1.103 0 2-0.896 2-2v-24h2v-2h-0zM12 2h8v2h-8v-2zM26.002 30l-0.002 1v-1h-20v-24h20v24h0.002z">
+                  </path>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="activities__boxContent">
+            <p>replied to post “<a href="room.html">100 Days of code challenge!</a>”</p>
+            <div class="activities__boxRoomContent">
+              I’ll have to try this sometime. Really like this idea. Wanna talk about it? I ‘m....
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Activities End -->
+    </div>
+  </main>
+{% endblock %}
