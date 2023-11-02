@@ -4,9 +4,11 @@ from .models import Profile
 from django.contrib import messages
 
 # Create your views here.\
-def profile(request):
-    rooms = Room.objects.filter(host=request.user)
-    context={"rooms":rooms}
+def profile(request, profile_id):
+    profile = Profile.objects.get(id=profile_id)
+    rooms = Room.objects.filter(host_profile=profile)
+    context={"rooms":rooms,
+             "profile": profile}
     return render(request, 'chat_app/profile.html', context)
 
 from django.shortcuts import render, redirect

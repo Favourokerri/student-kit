@@ -30,7 +30,7 @@ def create_room(request):
 
         category, created = Category.objects.get_or_create(name=room_category)
         room = Room.objects.create(host=request.user,
-                                   host_image=profile,
+                                   host_profile=profile,
                                     category=category,
                                     name=room_name,
                                     description=description,
@@ -42,8 +42,36 @@ def create_room(request):
 
     return render(request, 'chat_app/create_room.html', context)
 
-def delete_room(request, room_id):
+def edith_room(request, room_id):
     room = Room.objects.get(host=request.user, id=room_id)
+
+    try:
+        if request.method == "POST":
+            room_name = request.POST['room_name']
+            room_category = request.POST['room_topic']
+            description = request.POST['room_about']
+
+            room.name = room_name
+            room.category, create = Category.objects.get_or_create(name=room_category)
+            room.description = description
+            room.save()
+            messages.success(request, "room updated successfully")
+            return redirect("chat_home")
+
+    except Room.DoesNotExist:
+            messages.warning(request, "this room has been deleted")
+            return redirect('chat_home')
+    
+    context = {"room":room}
+    return render(request, "chat_app/edith_room.html", context)     
+
+
+def delete_room(request, room_id):
+    try:
+        room = Room.objects.get(host=request.user, id=room_id)
+    except Room.DoesNotExist:
+        messages.warning(request, "this room has been deleted")
+        return redirect('chat_home')
     
     if request.method == "POST":
         room.delete()
@@ -66,3 +94,7 @@ def filter_room(request, action):
 def filter_mobile(request):
     """ for mobile view """
     return render(request, 'chat_app/filter.html')
+
+def video_stream(request):
+    """ view function for stream """
+    return render(request, 'chat_app/video-room/video-room.html')

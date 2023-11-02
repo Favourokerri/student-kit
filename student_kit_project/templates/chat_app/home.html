@@ -44,10 +44,10 @@
     {% for room in rooms %}
         <div class="roomListRoom">
                 <div class="roomListRoom__header">
-                <a href="{% url 'profile' %}" class="roomListRoom__author">
+                <a href="{% url 'profile' profile_id=room.host_profile.id %}" class="roomListRoom__author">
                     <div class="avatar avatar--small">
-                    {% if user.profile_image %}
-                      <img src="{{ room.host_image.profile_image.url }}" />
+                    {% if room.host_profile.profile_image %}
+                      <img src="{{ room.host_profile.profile_image.url }}" />
                     {% else %}
                       <img src="{% static 'images/default.jpeg' %}" alt="User Profile Image">
                     {% endif %}
@@ -67,8 +67,13 @@
                 </div>
                 <div class="roomListRoom__meta">
                 <a href="room.html" class="roomListRoom__joined"><i class="fa-solid fa-user-group"></i>5.3k Joined</a>
-                <p class="roomListRoom__topic">join</p>
+                <a href="{% url 'video-stream' %}">
+                  <p class="roomListRoom__topic">join</p>
+                </a>
                 {% if request.user == room.host %}
+                  <a href="{% url 'edith_room' room_id=room.id %}">
+                    <p class="roomListRoom__topic">edith</p>
+                  </a>
                   <a href="{% url 'delete_room' room_id=room.id %}">
                     <p class="roomListRoom__topic">delete</p>
                   </a>

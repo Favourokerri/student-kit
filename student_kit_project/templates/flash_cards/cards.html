@@ -26,7 +26,9 @@
                 <a href="{% url 'card_items' card_id=card.id %}">
                     <button class="practice-button" onclick="practiceCard(this)">View card</button>
                 </a>
-                <button class="practice-button" onclick="practiceCard(this)">Practice</button>
+                <a href="{% url 'practice' card_id=card.id %}">
+                    <button class="practice-button">Practice</button>
+                </a>
             </div>
         </div>
     {% endfor %}

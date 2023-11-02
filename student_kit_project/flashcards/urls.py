@@ -11,4 +11,5 @@ urlpatterns = [
     path('edith_card_item/<uuid:card_id>/', views.edith_card_item, name="edith_card_item"),
     path('delet_card_item/<uuid:card_id>/', views.delete_card_item, name="delete_card_item"),
     path('text_to_speech/', views.text_to_speech, name="text_to_speech"),
+    path('practice/<uuid:card_id>/', views.practice, name="practice"),
 ]

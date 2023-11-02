@@ -27,7 +27,12 @@ def cards(request):
 
 def edith_card(request, card_id):
     """ function for edithing of cards"""
-    card = Card.objects.get(user=request.user, id=card_id)
+    try:
+        card = Card.objects.get(user=request.user, id=card_id)
+    except Card.DoesNotExist:
+        messages.warning(request, "this card has been deleted")
+        return redirect('cards')
+    
     if request.method == 'POST':
        title = request.POST['title']
        description = request.POST['description']
@@ -44,14 +49,24 @@ def edith_card(request, card_id):
 def delete_card(request, card_id):
     """ function to delete cards """
     if request.method == 'POST':
-        card = Card.objects.get(id=card_id)
-        card.delete()
-        messages.success(request, "card deleted successfully")
+
+        try:
+            card = Card.objects.get(id=card_id)
+            card.delete()
+            messages.success(request, "card deleted successfully")
+            return redirect('cards')
+        except Card.DoesNotExist:
+            messages.warning(request, "this card has been deleted")
         return redirect('cards')
+
     return render(request, 'flash_cards/confirm_delete.html')
 
 def add_card_items(request, card_id):
-    card = Card.objects.get(user=request.user, id=card_id)
+    try:
+        card = Card.objects.get(user=request.user, id=card_id)
+    except Card.DoesNotExist:
+        messages.error(request, 'Card has been deleted')
+        return redirect('cards')
     if request.method == 'POST':
         question = request.POST['question']
         action = request.POST.get('action') 
@@ -124,3 +139,14 @@ def text_to_speech(request):
         "question": card.question
     }
     return JsonResponse(response_data)
+
+def practice(request, card_id):
+    card = Card.objects.get(id=card_id)
+    card_items = Card_item.objects.filter(card__user=request.user, card__id=card_id)
+    total = card_items.count()
+    context = {
+                "card_items": card_items,
+                "card": card,
+                "total":total,
+                }
+    return render(request, "flash_cards/practice.html", context)

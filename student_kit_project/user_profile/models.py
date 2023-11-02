@@ -8,6 +8,7 @@ import uuid
 class Profile(models.Model):
     """ user profile """
     user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True, null=True)
+    id = models.UUIDField(default=uuid.uuid4, primary_key=True)
     email = models.CharField(max_length=200)
     profile_image = models.ImageField(upload_to='profile_images/', blank=True, null=True)
     first_name = models.CharField(max_length=200)

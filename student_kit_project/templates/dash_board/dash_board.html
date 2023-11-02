@@ -27,7 +27,9 @@
         <ul class="box-info">
             {% for card in cards %}
                 <li>
-                <i class="fa-solid fa-play"></i></i>
+                <a href="{% url 'practice' card_id=card.id %}">
+                    <i class="fa-solid fa-play"></i></i>
+                </a>
                     <span class="text">
                         <h3>{{ card.title }}</h3>
                         <p>click play to practice</p>
@@ -70,7 +72,7 @@
                         <tr>
                             <td>
                                 <img src="img/people.png">
-                                <p>{{ room.host }}</p>
+                                <p>{{ room.host.first_name }}</p>
                             </td>
                             <td>{{ room.name }}</td>
                             <td><span class="status completed">join</span></td>

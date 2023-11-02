@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{% static "css/notification.css" %}">
     <link rel="stylesheet" href="{% static "css/cards.css" %}">
     <link rel="stylesheet" href="{% static "css/card-items.css" %}">
+    <link rel="stylesheet" href="{% static "css/card-practice.css" %}">
 
     <!-- Set the page title using a block tag -->
     <title>{% block title %}{% endblock %}</title>
@@ -88,8 +89,13 @@
                 <i class='bx bxs-bell'></i>
                 <span class="num">{{ unread_notification_count }}</span>
             </a>
-            <a href="{% url 'profile' %}" class="profile">
-                <img src="{{ user.profile_image.url }}"/>
+            <a href="{% url 'profile' profile_id=user.id %}" class="profile">
+            {% if user.profile_image and user.profile_image.url %}
+                <img src="{{ user.profile_image.url }}" alt="User Profile Image">
+            {% else %}
+                <img src="{% static 'images/default.jpeg' %}" alt="User Profile Image">
+            {% endif %}
+            
             </a>
         </nav>
         <!-- NAVBAR -->
@@ -103,5 +109,6 @@
     <script src="{% static 'js/dash_board.js' %}"></script>
     <script src="{% static 'js/notification.js' %}"></script>
     <script src="{% static 'js/speech.js' %}"></script>
+    <script src="{% static 'js/card-practice.js' %}"></script>
 </body>
 </html>

@@ -1,0 +1,34 @@
+{% extends "dash_board/main2.html" %}
+
+{% block title %} dashboard {% endblock %}
+{% block content %}
+{% include 'messages.html' %}
+
+<div class="card_header">{{ card.title }}flash cards</div>
+<div class="slider-card">
+    <div class="slider-container">
+        <div class="slider">
+            {% if card_items %}
+                {% for card_item in card_items %}
+                <div class="slide">
+                    <p>{{ card_item.question }}</p>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="slide">
+                    <p>no cards to preview</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    {% if card_items %}
+        <button class="prev" onclick="changeSlide(-1)">Previous</button>
+        <button class="next" onclick="changeSlide(1)">Next</button><span><br>
+            <span id="slide-count">1 of {{ total }}</span>
+    {% else %}
+        <a href="{% url 'add_card_items' card_id=card.id %}">
+            <button class="next">Add card items</button>
+        </a>
+    {% endif %}
+</div>
+{% endblock %}

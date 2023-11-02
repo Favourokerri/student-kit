@@ -1,0 +1,93 @@
+body {
+    text-align: center;
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.slider-card {
+    width: 400px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    display: inline-block; /* Change this to inline-block */
+    vertical-align: top; /* Align them at the top */
+    padding: 20px;
+    margin-top: 30px;
+    
+}
+
+
+.slider-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 60vh;
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+    height: 100%;
+}
+
+.slide {
+    flex: 0 0 100%;
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3498db;
+    color: #ffffff;
+    font-size: 24px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 0px;
+    height: 100%;
+}
+
+p {
+    margin: 0;
+}
+
+.slider-card button {
+    margin-top: 20px;
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    font-size: 18px;
+}
+
+.slider-card button:hover {
+    background-color: #2980b9;
+}
+
+/* Media query for small screens */
+@media (max-width: 768px) {
+    .slider-card {
+        width: 90%;
+    }
+
+    .slider-container {
+        height: 40vh;
+    }
+
+    .slide {
+        width: 400px;
+        font-size: 18px;
+        padding: 20px;
+    }
+
+    .slide p {
+        text-align: center;
+    }
+}

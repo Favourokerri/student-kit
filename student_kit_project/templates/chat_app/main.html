@@ -8,6 +8,7 @@
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
     <script src="https://kit.fontawesome.com/db19a8a095.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static "css/chat_app.css" %}">
+    <link rel="stylesheet" href="{% static "css/video-room.css" %}">
     <title>StudyBuddy - Find study partners around the world!</title>
   </head>
 
@@ -16,7 +17,9 @@
       <div class="container">
         <a href="/" class="header__logo">
           <img src="assets/logo.svg" />
-          <h1>StudyBuddy</h1>
+          <a href="{% url 'dash_board' %}">
+            <h1>Dash Board</h1>
+          </a>
         </a>
         <form class="header__search">
           <label>
@@ -26,7 +29,7 @@
         <nav class="header__menu">
 
           <div class="header__user">
-            <a href="{% url 'profile' %}">
+            <a href="{% url 'profile' profile_id=user.id%}">
               <div class="avatar avatar--medium active">
               {% if user.profile_image %}
                 <img src="{{ user.profile_image.url }}" />
@@ -74,5 +77,6 @@
 
             {% endblock %}
     <script src="{% static "js/chat_app.js"%}"></script>
+    <script src="{% static "js/video-room.js"%}"></script>
   </body>
 </html>

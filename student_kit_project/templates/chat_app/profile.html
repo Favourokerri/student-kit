@@ -32,44 +32,65 @@
         <div class="profile">
           <div class="profile__avatar">
             <div class="avatar avatar--large active">
-              {% if user.profile_image %}
-                <img src="{{ user.profile_image.url }}" />
-              {% else %}
+            {% if request.user == profile.user %}
+              {% if profile.profile_image %}
+                <img src="{{ profile.profile_image.url }}" />
+              {% else  %}
                 <img src="{% static 'images/default.jpeg' %}" alt="User Profile Image">
+              {% endif %}
+            {% else %}
+              {% if profile.profile_image %}
+                <img src="{{ profile.profile_image.url }}" />
+              {% else  %}
+                <img src="{% static 'images/default.jpeg' %}" alt="User Profile Image">
+              {% endif %}
             {% endif %}
             </div>
           </div>
           <div class="profile__info">
-            <h3> first name: {{ user.first_name }}</h3>
-            <h3>last name: {{ user.last_name }}</h3>
-            <p>{{ user.email }}</p>
-            <a href="{% url 'edith_profile' %}" class="btn btn--main btn--pill">Edit Profile</a>
+            <h3> first name: {{ profile.first_name }}</h3>
+            <h3>last name: {{ profile.last_name }}</h3>
+            <p>{{ profile.email }}</p>
+            {% if request.user == profile.user %}
+              <a href="{% url 'edith_profile' %}" class="btn btn--main btn--pill">Edit Profile</a>
+            {% endif %}
           </div>
           <div class="profile__about">
             <h3>About</h3>
             <p>
-              {{user.bio}}
+              {{profile.bio}}
             </p>
           </div>
         </div>
 
         <div class="roomList__header">
           <div>
-            <h2>Study Rooms Hosted by dennis_ivy</a>
-            </h2>
+            {% if request.user == profile.user %}
+              <h2>Study Rooms Hosted by you </h2>
+            {% else %}
+              <h2>Study Rooms Hosted by {{ profile.first_name }}
+            {% endif %}
           </div>
         </div>
         {% if rooms %}
         {% for room in rooms %}
             <div class="roomListRoom">
                     <div class="roomListRoom__header">
-                    <a href="profile.html" class="roomListRoom__author">
+                    <a href="{% url 'profile' profile_id=room.host_profile.id%}" class="roomListRoom__author">
                         <div class="avatar avatar--small">
-                      {% if user.profile_image %}
-                          <img src="{{ user.profile_image.url }}" />
+                    {% if request.user == profile.user %}
+                      {% if profile.profile_image %}
+                          <img src="{{ profile.profile_image.url }}" />
                       {% else %}
-                      <img src="{% static 'images/default.jpeg' %}" alt="User Profile Image">
+                        <img src="{% static 'images/default.jpeg' %}" alt="User Profile Image">
                       {% endif %}
+                    {% else %}
+                      {% if profile.profile_image %}
+                        <img src="{{ profile.profile_image.url }}" />
+                      {% else %}
+                        <img src="{% static 'images/default.jpeg' %}" alt="User Profile Image">
+                      {% endif %}
+                    {% endif %}
                         </div>
                         <span>{{ room.host }}</span>
                         <p> (host) </p>
@@ -88,6 +109,9 @@
                     <a href="room.html" class="roomListRoom__joined"><i class="fa-solid fa-user-group"></i>5.3k Joined</a>
                     <p class="roomListRoom__topic">join</p>
                     {% if request.user == room.host %}
+                      <a href="{% url 'delete_room' room_id=room.id %}">
+                        <p class="roomListRoom__topic">edith</p>
+                      </a>
                       <a href="{% url 'delete_room' room_id=room.id %}">
                         <p class="roomListRoom__topic">delete</p>
                       </a>

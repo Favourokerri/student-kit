@@ -13,7 +13,7 @@ class Category(models.Model):
 class Room(models.Model):
     id = models.UUIDField(default=uuid.uuid4, primary_key=True)
     host = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
-    host_image = models.ForeignKey(Profile, on_delete=models.CASCADE, blank=True, null=True)
+    host_profile = models.ForeignKey(Profile, on_delete=models.CASCADE, blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
