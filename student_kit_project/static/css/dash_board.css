@@ -477,6 +477,7 @@ body {
 	color: var(--light);
 	border-radius: 20px;
 	font-weight: 700;
+	cursor: pointer;
 }
 #content main .table-data .order table tr td .status.completed {
 	background: var(--blue);

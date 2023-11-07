@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from chatRoom.models import Room
+from chatRoom.models import Room, Room_Members
 from .models import Profile
 from django.contrib import messages
 
@@ -7,8 +7,12 @@ from django.contrib import messages
 def profile(request, profile_id):
     profile = Profile.objects.get(id=profile_id)
     rooms = Room.objects.filter(host_profile=profile)
+    total_active_rooms = Room.objects.filter(active=True).count()
+    members_count=Room_Members.objects.count()
     context={"rooms":rooms,
-             "profile": profile}
+             "profile": profile,
+             "members_count":members_count,
+             "total_active_rooms":total_active_rooms}
     return render(request, 'chat_app/profile.html', context)
 
 from django.shortcuts import render, redirect

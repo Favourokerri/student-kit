@@ -1,37 +1,58 @@
 body {
   font-family: Arial, sans-serif;
-  text-align: center;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
 }
 
-header {
-  background-color: #333;
-  color: #fff;
-  padding: 20px;
-}
-
-main {
-  padding: 20px;
-}
-
-.stream {
+.conference-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-video {
-  width: 45%;
-  border: 1px solid #333;
-  margin: 10px;
-}
-
-footer {
+  align-items: center;
+  gap: 10px;
   padding: 20px;
 }
 
+.user-video {
+  width: 45%;
+  max-width: 320px;
+  background-color: #fff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.video-container {
+  flex: 1;
+  overflow: hidden;
+}
+
+video {
+  width: 100%;
+  height: auto;
+}
+
+.user-details {
+  padding: 10px;
+  text-align: center;
+  background-color: #a3bb99;
+  color: #fff;
+}
+
+.user-name {
+  font-weight: bold;
+}
 
 
-/* Existing CSS styles remain the same */
+footer {
+  display: flex;
+  justify-content: center; /* Horizontal centering */
+  align-items: center; /* Vertical centering */
+  padding: 20px;
+}
 
 /* Style the buttons */
 .btn-icon {
@@ -55,9 +76,23 @@ footer {
 }
 
 #close-camera-button {
-  background-color: #4caf50;
+  background: #4caf50;
 }
 
 #mute-button {
   background-color: #f44336;
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  video {
+    width: 100%; /* Make the video take the full width on smaller screens */
+    margin: 5px;
+  }
+}
+
+@media (max-width: 768px) {
+  .user-video {
+      width: 100%;
+  }
 }

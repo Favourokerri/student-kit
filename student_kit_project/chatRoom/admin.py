@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Room, Category, message
+from .models import Room, Category, Room_Members
 
 class RoomAdmin(admin.ModelAdmin):
     list_display = ('name', 'category', 'updated')
@@ -9,4 +9,4 @@ class RoomAdmin(admin.ModelAdmin):
 
 admin.site.register(Room, RoomAdmin)
 admin.site.register(Category)
-admin.site.register(message)
+admin.site.register(Room_Members)

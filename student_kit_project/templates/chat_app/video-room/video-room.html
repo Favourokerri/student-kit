@@ -5,14 +5,15 @@
 {% include "messages.html" %}
 
     <main>
-      <div class="stream">
-
+      <div id="token-user-id-data" data-token="{{ token }}" data-room-id ="{{room.name}}" room-id ="{{room.id}}" user = {{ user1 }} data-user-id="{{ user_id }}"></div>
+       <div class="conference-container">
+      
       </div>
     </main>
     <footer>
       <button id="end-call-button" class="btn-icon"><i class="fas fa-phone-slash"></i></button>
       <button id="close-camera-button" class="btn-icon"><i class="fas fa-camera"></i></button>
-      <button id="mute-button" class="btn-icon"><i class="fas fa-microphone-slash"></i></button>
+      <button id="mute-button" class="btn-icon"><i class="fa-solid fa-microphone-lines"></i></button>
     </footer>
 <script type="text/javascript" src="{% static 'assets/AgoraRTC_N-4.19.2.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/stream.js' %}"></script>

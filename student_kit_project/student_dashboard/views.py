@@ -1,12 +1,14 @@
 from django.shortcuts import render
 from flashcards.models import Card
-from chatRoom.models import Room 
+from chatRoom.models import Room, Room_Members
+from django.db.models import Count
+from chatRoom.models import Room, Room_Members
 
 def index(request):
     """Dashboard"""
     if request.user.is_authenticated:
         cards = Card.objects.filter(user=request.user)[:3]
-        rooms = Room.objects.all()[:4]
+        rooms = Room.objects.filter(active=True)
         context = {
                    "cards": cards,
                    "rooms": rooms}

@@ -19,16 +19,19 @@ class Room(models.Model):
     description = models.TextField(null=True, blank=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default=False)
+
+    def members(self):
+        """ retrive members of room"""
+        return Room_Members.objects.filter(room=self)
 
     def __str__(self):
         return self.name
 
-class message(models.Model):
+class Room_Members(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
-    message = models.TextField()
-    updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.message[:50]
+        return self.user.username

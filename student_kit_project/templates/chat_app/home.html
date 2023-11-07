@@ -10,9 +10,9 @@
           <h2>Browse Topics</h2>
         </div>
         <ul class="topics__list">
-          <li><a href="{% url 'filter_room' action="all" %}" class="active">All <span>553</span></a></li>
-          <li><a href="{% url 'filter_room' action="my_created_rooms" %}">Your created rooms <span>553</span></a></li>
-          <li><a href="/">joined rooms <span>553</span></a></li>
+          <li><a href="{% url 'filter_room' action="all" %}" class="active">All <span>{{total_room}}</span></a></li>
+          <li><a href="{% url 'filter_room' action="my_created_rooms" %}">Your created rooms <span></span></a></li>
+          <li><a href="{% url 'filter_room' action="active_rooms" %}">Active rooms <span>{{total_active_rooms}}</span></a></li>
         </ul>
         <a class="btn btn--link" href="topics.html">More</a>
       </div>
@@ -28,13 +28,13 @@
           </form>
           <div class="mobile-menuItems">
             <a class="btn btn--main btn--pill" href="{% url 'filter_room_mobile' %}">Browse Topics</a>
-            <a class="btn btn--main btn--pill" href="{% url 'recent_activity' %}">Recent Activities</a>
+            <a class="btn btn--main btn--pill" href="{% url 'recent_activity' %}">Activities</a>
           </div>
         </div>
         <div class="roomList__header">
           <div>
-            <h2>Study Room</h2>
-            <p>7,439 Rooms available</p>
+            <h2>Student Hub</h2>
+            <p>{{ total_room }} Rooms available</p>
           </div>
           <a class="btn btn--main" href="{% url 'create_room' %}">
             Create Room
@@ -52,22 +52,22 @@
                       <img src="{% static 'images/default.jpeg' %}" alt="User Profile Image">
                     {% endif %}
                     </div>
-                    <span>{{ room.host }}</span>
+                    <span>{{ room.host.first_name }}</span>
                     <p> (host) </p>
                 </a>
                 <div class="roomListRoom__actions">
-                    <span>5 days ago</span>
+                    <span>{{ room.updated }}</span>
                 </div>
                 </div>
                 <div class="roomListRoom__content">
-                <a href="{% url 'room' room_id=room.id %}" style="color:#a3bb99;">{{ room.name }}</a>
+                <a href="{% url 'join_video-stream' room_id=room.id %}" style="color:#a3bb99;">{{ room.name }}</a>
                 <p>
                    {{ room.description }}
                 </p>
                 </div>
                 <div class="roomListRoom__meta">
-                <a href="room.html" class="roomListRoom__joined"><i class="fa-solid fa-user-group"></i>5.3k Joined</a>
-                <a href="{% url 'video-stream' %}">
+                <a href="room.html" class="roomListRoom__joined"><i class="fa-solid fa-user-group"></i>{{ room.members.count }} Joined</a>
+                <a href="{% url 'join_video-stream' room_id=room.id %}">
                   <p class="roomListRoom__topic">join</p>
                 </a>
                 {% if request.user == room.host %}
@@ -90,69 +90,8 @@
       <!-- Activities Start -->
       <div class="activities">
         <div class="activities__header">
-          <h2>Recent Activities</h2>
+          <h2>Are you studying? you should.</h2>
         </div>
-        <div class="activities__box">
-          <div class="activities__boxHeader roomListRoom__header">
-            <a href="profile.html" class="roomListRoom__author">
-              <div class="avatar avatar--small">
-                <img src="https://randomuser.me/api/portraits/women/11.jpg" />
-              </div>
-              <p>
-                @sulamita_ivy
-                <span>5 days ago</span>
-              </p>
-            </a>
-            <div class="roomListRoom__actions">
-              <a href="#">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-                  <title>remove</title>
-                  <path
-                    d="M27.314 6.019l-1.333-1.333-9.98 9.981-9.981-9.981-1.333 1.333 9.981 9.981-9.981 9.98 1.333 1.333 9.981-9.98 9.98 9.98 1.333-1.333-9.98-9.98 9.98-9.981z"
-                  ></path>
-                </svg>
-              </a>
-            </div>
-          </div>
-          <div class="activities__boxContent">
-            <p>replied to post “<a href="room.html">100 Days of code challenge!</a>”</p>
-            <div class="activities__boxRoomContent">
-              I’ll have to try this sometime. Really like this idea. Wanna talk about it? I ‘m....
-            </div>
-          </div>
-        </div>
-
-        <div class="activities__box">
-          <div class="activities__boxHeader roomListRoom__header">
-            <a href="profile.html" class="roomListRoom__author">
-              <div class="avatar avatar--small active">
-                <img src="https://randomuser.me/api/portraits/men/13.jpg" />
-              </div>
-              <p>
-                @mr_spshuvo
-                <span>5 days ago</span>
-              </p>
-            </a>
-            <div class "roomListRoom__actions">
-              <a href="#">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-                  <title>remove</title>
-                  <path
-                    d="M27.314 6.019l-1.333-1.333-9.98 9.981-9.981-9.981-1.333 1.333 9.981 9.981-9.981 9.98 1.333 1.333 9.981-9.98 9.98 9.98 1.333-1.333-9.98-9.98 9.98-9.981z"
-                  ></path>
-                </svg>
-              </a>
-            </div>
-          </div>
-          <div class="activities__boxContent">
-            <p>replied to post “<a href="room.html">100 Days of code challenge!</a>”</p>
-            <div class="activities__boxRoomContent">
-              I’ll have to try this sometime. Really like this idea. Wanna talk about it? I ‘m....
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Activities End -->
     </div>
   </main>
 {% endblock %}
