@@ -33,31 +33,12 @@ This combination of technologies enables us to create a well-rounded and user-fr
 1. **User Authentication:**
    - Provide user registration and login functionality, allowing users to create accounts and save their information.
 
-2. **Shopping Cart:**
-   - Enable users to add products to their cart, view the cart contents, and update quantities or remove items.
+2. **Flashcard Creation and Management:**
 
-3. **Checkout Process:**
-   - Guide customers through a seamless checkout process with shipping and payment information.
+    Enable users to easily create, customize, and manage their own flashcards for effective learning.
 
-4. **Order History:**
-   - Maintain a record of users' order history, making it easy for them to track past purchases.
-
-5. **Search and Filter:**
-   - Allow users to search for products using keywords and filter results by attributes like category, price range, and brand.
-
-6. **Responsive Design:**
-    - Ensure the website is accessible and user-friendly on various devices and screen sizes.
-
-7. **Security Measures:**
-    - Implement security features like SSL certificates and encryption to protect user data and transactions.
-
-8. **Email Notifications:**
-    - Send order confirmation emails, new blog post, and updates to customers, as well as email alerts for admin actions.
-9. **Blog Post*:*
-    - blog post for admin to easily reachout to customers
-
-19. **Customer Support and Contact:**
-    - Provide contact information and a support system for users to get assistance.
+3. **Interactive Video Streams:**
+Provide a platform for users to create and join interactive video streams for collaborative learning sessions.
 
 ## Acknowledgments:
 
@@ -78,4 +59,4 @@ I would also like to extend my appreciation to the broader web development commu
     <img src="./README-img.md/dash.png" alt="technologies">
 
 2. **video room**:
-    <img src="./README-img.md/room.png" alt="technologies">
+    <img src="./README-img.md/room.png" alt="room">
