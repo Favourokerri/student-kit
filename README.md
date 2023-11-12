@@ -74,14 +74,8 @@ I would like to express my gratitude to the following technologies and resources
 I would also like to extend my appreciation to the broader web development community, forums, and documentation sources that have been invaluable throughout this project. Your open-source contributions and online discussions have been a constant source of inspiration and knowledge.
 
 ## view
-1. **home**:
-    <img src="./README-img.md/home.png" alt="technologies">
+1. **Dashboard**:
+    <img src="./README-img.md/dash.png" alt="technologies">
 
-2. **shop**:
-    <img src="./README-img.md/shop.png" alt="technologies">
-
-3. **cart**:
-    <img src="./README-img.md/cart.png" alt="technologies">
-
-4. **blog**:
-    <img src="./README-img.md/blog.png" alt="technologies">
+2. **video room**:
+    <img src="./README-img.md/room.png" alt="technologies">
