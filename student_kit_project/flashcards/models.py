@@ -14,7 +14,7 @@ class Card(models.Model):
 class Card_item(models.Model):
     card = models.ForeignKey(Card, on_delete=models.CASCADE)
     id = models.UUIDField(default=uuid.uuid4, primary_key=True)
-    question = models.CharField(max_length=200)
+    question = models.TextField(max_length=200)
     description = models.TextField(blank=True, null=True)
 
     def __str__(self):
