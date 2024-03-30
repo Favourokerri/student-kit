@@ -11,7 +11,7 @@
             {% if card_items %}
                 {% for card_item in card_items %}
                 <div class="slide">
-                    <p>{{ card_item.question|linebreaksbr|safe }}</p>
+                    <p>{{ card_item.question }}</p>
                 </div>
                 {% endfor %}
             {% else %}

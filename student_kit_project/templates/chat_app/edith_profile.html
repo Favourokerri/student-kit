@@ -28,17 +28,17 @@
 
                     <div class="form__group">
                         <label for="last_name">first_name</label>
-                        <input id="first_name" name="first_name" type="text" placeholder="E.g. John doe"  required/>
+                        <input id="first_name" name="first_name" value="{{ profile.first_name }}" type="text" placeholder="E.g. John doe"  required/>
                     </div>
 
                     <div class="form__group">
                         <label for="last_name">last_name</label>
-                        <input id="last_name" name="last_name" type="text" placeholder="E.g. John doe"  required />
+                        <input id="last_name" name="last_name" value="{{ profile.last_name}}" type="text" placeholder="E.g. John doe"  required />
                     </div>
         
                     <div class="form__group">
                         <label for="user_bio">Bio</label>
-                        <textarea name="user_bio" id="user_bio" placeholder="Write about yourself..."></textarea>
+                        <textarea name="user_bio" id="user_bio" placeholder="Write about yourself..."> {{ profile.bio }}</textarea>
                     </div>
                     <div class="form__action">
 

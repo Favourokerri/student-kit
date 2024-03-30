@@ -19,9 +19,8 @@ from django.shortcuts import render, redirect
 from .models import Profile
 
 def edith_profile(request):
+    profile = Profile.objects.get(user=request.user)
     if request.method == "POST":
-        profile = Profile.objects.get(user=request.user)
-
         # Update the profile fields with form data
         if 'profile_pic' in request.FILES:
             profile.profile_image = request.FILES['profile_pic']
@@ -34,5 +33,5 @@ def edith_profile(request):
         profile.save()
         messages.success(request, 'profile edithed successfully')
         return redirect('chat_home')
- 
-    return render(request, 'chat_app/edith_profile.html')
+    context = {'profile': profile}
+    return render(request, 'chat_app/edith_profile.html', context)

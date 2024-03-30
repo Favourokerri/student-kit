@@ -17,9 +17,8 @@ body {
     vertical-align: top; /* Align them at the top */
     padding: 20px;
     margin-top: 30px;
-    
+    overflow-y: auto; /* Add this line */
 }
-
 
 .slider-container {
     display: flex;
@@ -51,8 +50,9 @@ body {
     height: 100%;
 }
 
-p {
+.slide p {
     margin: 0;
+    overflow-wrap: anywhere; /* Allow line breaks anywhere */
 }
 
 .slider-card button {

@@ -16,9 +16,9 @@
     <header class="header header--loggedIn">
       <div class="container">
         <a href="/" class="header__logo">
-          <img src="assets/logo.svg" />
-          <a href="{% url 'dash_board' %}">
-            <h1>Dash Board</h1>
+          <img src="{% static 'images/hub.jpg' %}" style="width: 30px;" />
+          <a href="{% url 'dash_board' %}"
+            <h1 style="font-size: 15px;">Dash Board</h1>
           </a>
         </a>
         <form class="header__search" action="{% url 'room_search' %}" method="get">

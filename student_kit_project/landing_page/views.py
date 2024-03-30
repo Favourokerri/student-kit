@@ -42,6 +42,7 @@ def signup(request):
                     email = email,
                     first_name = user.first_name,
                     last_name = user.last_name,
+                    is_verified = True,
                 )
                 user_profile.save()
                 confirm_email(request, email, user_profile.token)

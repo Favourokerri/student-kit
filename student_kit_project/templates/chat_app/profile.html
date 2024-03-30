@@ -52,11 +52,11 @@
             <h3>last name: {{ profile.last_name }}</h3>
             <p>{{ profile.email }}</p>
             {% if request.user == profile.user %}
-              <a href="{% url 'edith_profile' %}" class="btn btn--main btn--pill">Edit Profile</a>
+              <a href="{% url 'edith_profile' %}" style="color: black;" class="btn btn--main btn--pill">Edit Profile</a>
             {% endif %}
           </div>
           <div class="profile__about">
-            <h3>About</h3>
+            <h3 style="font-size: 25px;">About</h3>
             <p>
               {{profile.bio}}
             </p>
@@ -66,7 +66,7 @@
         <div class="roomList__header">
           <div>
             {% if request.user == profile.user %}
-              <h2>Study Rooms Hosted by you </h2>
+              <h2 style="color: black; font-size: 20px;">Study Rooms Hosted by you </h2>
             {% else %}
               <h2>Study Rooms Hosted by {{ profile.first_name }}
             {% endif %}
@@ -100,22 +100,22 @@
                     </div>
                     </div>
                     <div class="roomListRoom__content">
-                    <a href="{% url 'join_video-stream' room_id=room.id %}" style="color:#a3bb99;">{{ room.name }}</a>
+                    <a href="{% url 'join_video-stream' room_id=room.id %}" style="color:black;">{{ room.name }}</a>
                     <p>
                        {{ room.description }}
                     </p>
                     </div>
                     <div class="roomListRoom__meta">
-                    <a href="room.html" class="roomListRoom__joined"><i class="fa-solid fa-user-group"></i>{{ members_count }} Joined</a>
+                    <a href="room.html" class="roomListRoom__joined" style="color: black;"><i class="fa-solid fa-user-group"></i>{{ members_count }} Joined</a>
                     <a href="{% url 'join_video-stream' room_id=room.id %}">
-                      <p class="roomListRoom__topic">join</p>
+                      <p class="roomListRoom__topic" style="color: black;">join</p>
                     </a>
                     {% if request.user == room.host %}
                       <a href="{% url 'edith_room' room_id=room.id %}">
-                        <p class="roomListRoom__topic">edith</p>
+                        <p class="roomListRoom__topic" style="color: black;">edith</p>
                       </a>
                       <a href="{% url 'delete_room' room_id=room.id %}">
-                        <p class="roomListRoom__topic">delete</p>
+                        <p class="roomListRoom__topic" style="color: black;">delete</p>
                       </a>
                     {% endif %}
                     </div>

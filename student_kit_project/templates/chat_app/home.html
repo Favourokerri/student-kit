@@ -14,7 +14,6 @@
           <li><a href="{% url 'filter_room' action="my_created_rooms" %}">Your created rooms <span></span></a></li>
           <li><a href="{% url 'filter_room' action="active_rooms" %}">Active rooms <span>{{total_active_rooms}}</span></a></li>
         </ul>
-        <a class="btn btn--link" href="topics.html">More</a>
       </div>
       <!-- Topics End -->
 
@@ -36,7 +35,7 @@
             <h2>Student Hub</h2>
             <p>{{ total_room }} Rooms available</p>
           </div>
-          <a class="btn btn--main" href="{% url 'create_room' %}">
+          <a class="btn btn--main" style="color: black;" href="{% url 'create_room' %}">
             Create Room
           </a>
         </div>
@@ -60,7 +59,7 @@
                 </div>
                 </div>
                 <div class="roomListRoom__content">
-                <a href="{% url 'join_video-stream' room_id=room.id %}" style="color:#a3bb99;">{{ room.name }}</a>
+                <a href="{% url 'join_video-stream' room_id=room.id %}" style="color: black;">{{ room.name }}</a>
                 <p>
                    {{ room.description }}
                 </p>
@@ -68,14 +67,14 @@
                 <div class="roomListRoom__meta">
                 <a href="room.html" class="roomListRoom__joined"><i class="fa-solid fa-user-group"></i>{{ room.members.count }} Joined</a>
                 <a href="{% url 'join_video-stream' room_id=room.id %}">
-                  <p class="roomListRoom__topic">join</p>
+                  <p class="roomListRoom__topic" style="color: black;">join</p>
                 </a>
                 {% if request.user == room.host %}
                   <a href="{% url 'edith_room' room_id=room.id %}">
-                    <p class="roomListRoom__topic">edith</p>
+                    <p class="roomListRoom__topic" style="color: black;">edith</p>
                   </a>
                   <a href="{% url 'delete_room' room_id=room.id %}">
-                    <p class="roomListRoom__topic">delete</p>
+                    <p class="roomListRoom__topic" style="color: black;">delete</p>
                   </a>
                 {% endif %}
                 </div>
