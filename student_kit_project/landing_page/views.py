@@ -114,6 +114,43 @@ def log_in(request):
     
     return render(request, 'landing_page/sign_in.html')
 
+def log_inDemoUser(request):
+    username = 'favourokerri767@gmail.com'
+    password = '123456789'
+    user = authenticate(request, username=username, password=password)
+
+    if user is not None:
+        try:
+            profile_obj = Profile.objects.get(user=user)
+            if profile_obj.is_verified:
+                login(request, user)
+
+                if profile_obj.first_time_login:
+                    for notification in Welcome_Notification.objects.all():
+                        Notification.objects.create(
+                            user=request.user,
+                            title=notification.title,
+                            message=notification.message
+                        )
+                    
+                profile_obj.first_time_login = False
+                profile_obj.save()
+                messages.success(request, 'Login successful')
+                return redirect(reverse('dash_board'))
+                
+            else:
+                messages.warning(request, 'Please verify your account to login')
+                return render(request, 'landing_page/verify_account.html')
+            
+        except Profile.DoesNotExist:
+            messages.warning(request, 'User profile does not exist')
+        
+    else:
+        messages.error(request, 'Username and/or password incorrect')
+    
+    return render(request, 'landing_page/sign_in.html')
+
+
 def log_out(request):
     """ handel logout"""
     logout(request)
