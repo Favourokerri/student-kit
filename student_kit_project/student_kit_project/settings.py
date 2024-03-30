@@ -90,7 +90,7 @@ WSGI_APPLICATION = 'student_kit_project.wsgi.application'
     #}
 #}
 
-if not DEBUG:
+if DEBUG:
     DATABASES = {
 	"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
