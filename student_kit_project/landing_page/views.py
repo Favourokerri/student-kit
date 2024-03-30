@@ -45,7 +45,7 @@ def signup(request):
                     is_verified = True,
                 )
                 user_profile.save()
-                confirm_email(request, email, user_profile.token)
+                #confirm_email(request, email, user_profile.token)
 
                 messages.success(request, "your account has been registered successfully check email for verification")
                 return redirect('login')
