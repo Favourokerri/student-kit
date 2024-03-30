@@ -99,7 +99,7 @@ else:
   DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'STUDENT_KIT',
+        'NAME': 'STUDENT_KIT2',
         'USER': 'okerri',
         'PASSWORD': config('DATABASE_PASSWORD'),
         'HOST': 'localhost',

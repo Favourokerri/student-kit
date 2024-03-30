@@ -15,7 +15,6 @@ class Welcome_Notification(models.Model):
     
 class General_Notification(models.Model):
     """ notifications ment for everyone"""
-    id = models.UUIDField(default=uuid.uuid4, primary_key=True)
     users_seen = models.ManyToManyField(User, blank=True)
     title = models.CharField(max_length=200)
     message = models.TextField()
