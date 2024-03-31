@@ -41,8 +41,8 @@ def create_room(request):
     profile = Profile.objects.get(user=request.user)
     context = {"categories": categories}
     if request.method == 'POST':
-        room_name = request.POST['room_name']
-        room_category = request.POST['room_topic']
+        room_name = request.POST['room_topic']
+        room_category = request.POST['room_name']
         description = request.POST['room_about']
 
         category, created = Category.objects.get_or_create(name=room_category)
