@@ -92,7 +92,7 @@
                       {% endif %}
                     {% endif %}
                         </div>
-                        <span>{{ room.host }}</span>
+                        <span>{{ room.host.first_name }}</span>
                         <p> (host) </p>
                     </a>
                     <div class="roomListRoom__actions">
@@ -100,7 +100,7 @@
                     </div>
                     </div>
                     <div class="roomListRoom__content">
-                    <a href="{% url 'join_video-stream' room_id=room.id %}" style="color:black;">{{ room.name }}</a>
+                    <a href="{% url 'join_video-stream' room_id=room.id %}" style="color:black;">{{ room.name }} ({{ roo.topic }})</a>
                     <p>
                        {{ room.description }}
                     </p>
