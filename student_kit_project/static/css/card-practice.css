@@ -80,14 +80,5 @@ body {
     .slider-container {
         height: 40vh;
     }
-
-    .slide {
-        width: 400px;
-        font-size: 18px;
-        padding: 20px;
-    }
-
-    .slide p {
-        text-align: center;
-    }
+   
 }
