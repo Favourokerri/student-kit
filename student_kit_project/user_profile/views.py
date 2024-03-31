@@ -16,18 +16,24 @@ def profile(request, profile_id):
     return render(request, 'chat_app/profile.html', context)
 
 from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
 from .models import Profile
 
 def edith_profile(request):
     profile = Profile.objects.get(user=request.user)
+    user = request.user
     if request.method == "POST":
         # Update the profile fields with form data
         if 'profile_pic' in request.FILES:
             profile.profile_image = request.FILES['profile_pic']
         if 'first_name' in request.POST:
             profile.first_name = request.POST['first_name']
+            user.first_name =  request.POST['first_name']
+            user.save()
         if 'last_name' in request.POST:
             profile.last_name = request.POST['last_name']
+            user.last_name =  request.POST['last_name']
+            user.save();
         if 'user_bio' in request.POST:
             profile.bio = request.POST['user_bio']
         profile.save()
